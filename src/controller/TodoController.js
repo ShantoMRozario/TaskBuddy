@@ -9,11 +9,11 @@ exports.CreateTodo = async(req,res)=>{
         const reqBody = req.body;
         reqBody.email = req.headers.email
         const todo = await TodoModel.create(reqBody)
-        res.status(200).json({ status:'success', data: todo})
+        res.status(200).json({ status:'Success', data: todo})
         
     }
     catch(error){
-        res.status(400).json({ status:'failed', message: error.message})
+        res.status(200).json({ status:'Failed', message: error.message})
     }
 }
 
@@ -27,10 +27,10 @@ exports.UpdateTodoStatus = async(req,res)=>{
         let status = req.params.status
         let query = {_id: id}
         const todo =  await TodoModel.updateOne(query,{status:status})
-        res.status(200).json({status:'success', data: todo})
+        res.status(200).json({status:'Success', data: todo})
     }
     catch(error){
-        res.status(400).json({status:'Failed', data: error.message})
+        res.status(200).json({status:'Failed', data: error.message})
     }
 }
 //Update Todo
@@ -42,10 +42,10 @@ exports.DeleteTodo = async(req,res)=>{
         let id = req.params.id
         let query = {_id: id}
         const todo = await TodoModel.deleteOne(query)
-        res.status(200).json({status:'success', data: todo })
+        res.status(200).json({status:'Success', data: todo })
     }
     catch(error){
-        res.status(400).json({status: 'Failed', data: error.message})
+        res.status(200).json({status: 'Failed', data: error.message})
     }
 }
 //Delete Todo
@@ -62,10 +62,10 @@ exports.TodoListByStatus = async(req,res)=>{
             ]
         )
 
-        res.status(200).json({status: 'succss', data: result})
+        res.status(200).json({status: 'Success', data: result})
     }
     catch(error){
-        res.status(400).json({status: 'failed', data: error})  
+        res.status(200).json({status: 'Failed', data: error})  
     }
 }
 //Find todo list by Status
@@ -80,10 +80,10 @@ exports.TodoCountByStatus = async(req,res)=>{
                 {$group:{_id:"$status",total:{$count:{}}}}
             ]
         )
-        res.status(200).json({ status:'success', data: result})    
+        res.status(200).json({ status:'Success', data: result})    
     }
     catch(error){
-        res.status(400).json({ status:'failed', data: error})
+        res.status(200).json({ status:'Failed', data: error})
     }
 }
 // @ Todo count by status

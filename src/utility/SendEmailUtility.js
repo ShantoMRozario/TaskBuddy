@@ -2,22 +2,23 @@
 const nodemailer = require("nodemailer");
 
 
-//Create transporter useing SMTP
-const SendEmailUtility = async (EmailTo,EmailSubject,EmailText)=>{
+const SendEmailUtility = async (EmailTo,EmailSubject,EmailHTML )=>{
+    
+    //Create transporter useing SMTP
     const transporter = nodemailer.createTransport({
         service:'Gmail',
         auth:{
-            user:'YOURMAIL',
-            pass:'PASS'
+            user:'shantorozariom@gmail.com',
+            pass:'oqua wxsk xqiy uacv',
         }
     });
 
     // The Email Message 
   let mailOptions = {
-    from: '"Company Name" <YOURMAIL>', // sender address
+    from: '"TaskBuddy" <shantorozariom@gmail.com>', // sender address
     to: EmailTo, // list of receivers
     subject: EmailSubject, // Subject line
-    text: EmailText, // plain text body
+    html: EmailHTML , // plain text body
   };
 
   //Send Email
