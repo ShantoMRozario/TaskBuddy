@@ -11,7 +11,7 @@ const TodoController = require('../controller/TodoController')
 router.post('/registration', UsersController.Registration)
 
 //Login route
-router.get('/login',UsersController.Login)
+router.post('/login',UsersController.Login)
 
 //Update Profile route
 router.post('/user-profile-update', AuthVerifyMiddleware ,UsersController.UpdateProfile)
